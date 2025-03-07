@@ -36,10 +36,37 @@ const obtenerTareaIdModel = async (id_tarea) => {
     return rows[0];
 }
 
+// actualizar tares usando el id 
+const actualizarTareaModel = async (id_tarea, titulo, descripcion, estado) => {
+    const query = {
+        text: `UPDATE task SET titulo = $1, descripcion = $2, estado = $3 WHERE id_tarea = $4 RETURNING *`,
+        values: [titulo, descripcion, estado, id_tarea]  // Corregido el orden de los valores
+    };
+    const { rows } = await database.query(query);
+    return rows[0];
+};
+
+// eliminar tareas
+const eliminarTareaModel = async (id_tarea) => {
+   try{
+    const query = "DELETE FROM task WHERE id_tarea = $1 RETURNING *";
+    const { rows } = await database.query(query, [id_tarea]);
+    if(rows.length === 0){
+        throw new Error("No se encontró la tarea");
+    }
+    return rows[0];
+   } catch ( error ){
+     throw new Error("No se pudo eliminar la tarea");
+   }
+   
+}
+
 
 // exportar el modelo de tareas para que se pueda utilizar en otros archivos.
 export const TaresaModel = {
     registrarTareasModel,
     obtenerTareasModel,
-    obtenerTareaIdModel
+    obtenerTareaIdModel,
+    actualizarTareaModel,
+    eliminarTareaModel
     }  
