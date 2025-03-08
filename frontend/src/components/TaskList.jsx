@@ -14,13 +14,11 @@ export function TaskList(){
             const res = await getAllTasks();
             setTasks(res.data)
             }
-            toast.success('Lista de Tareas Cargada', {
-                position: 'top-center',
-            }) 
+        
         loadTasks();
 
     }, []);
-    return <div className="grid grid-col-3 gap-3">
+    return <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 m-4">
             {tasks.map(task => (
                 <TaskCard key={task.id_tarea} task={task}/>
             ))}

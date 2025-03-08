@@ -45,10 +45,11 @@ export function TaskFormPage() {
     }, [])
 
     return (
-        <div> 
+        <div className="max-w-xl mx-auto"> 
             <h2>Crear Nueva Tarea</h2>
             <form onSubmit={onSubmit}>
                 <input
+                    className="bg-zinc-700 p-3 rounded-lg block w-full mb-3"
                     type="text"
                     placeholder="Título"
                     {...register("titulo", { required: true })}
@@ -56,20 +57,24 @@ export function TaskFormPage() {
                 {errors.titulo && <span>Este campo es requerido</span>}
 
                 <textarea
+                className="bg-zinc-700 p-3 rounded-lg block w-full mb-3"
                     rows="3"
                     placeholder="Descripción"
                     {...register("descripcion", { required: true })}
                 />
                 {errors.descripcion && <span>Este campo es requerido</span>}
 
-                <select {...register("estado", { required: true })}>
+                <select 
+                className="bg-zinc-700 p-3 rounded-lg block w-full mb-3"
+
+                {...register("estado", { required: true })}>
                     <option value="TODO">TODO</option>
                     <option value="PROGRESS">PROGRESS</option>
                     <option value="DONE">DONE</option>
                 </select>
-                <button >Crear tarea</button>
+                <button className="bg-cyan-500 p-3 rounded-2xl hover:bg-cyan-600 block w-full mt-3 hover:cursor-pointer" >Crear tarea</button>
             </form>
-            { params.id_tarea && <button onClick={async () =>{
+            { params.id_tarea && <button className="bg-red-500 p-3 rounded-lg w-48 mt-3" onClick={async () =>{
                 const accepted = window.confirm("¿Estás seguro de que deseas eliminar la tarea?");
                 if (accepted) {
                     await deleteTask(params.id_tarea);
