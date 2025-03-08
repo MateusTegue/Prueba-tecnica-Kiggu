@@ -1,4 +1,3 @@
-import { database } from "../database/conexiondb.js";
 import { TaresaModel } from "../models/task.model.js";
 
 // registro de task controllers
@@ -26,7 +25,7 @@ export const registrarTask = async (req, res) => {
 export const obtenerTareas = async (req, res) => {
     try {
         const task = await TaresaModel.obtenerTareasModel();
-        return res.status(200).json({ ok: true, message: "Tareas obtenidas con éxito", data: task });
+        return res.status(200).json(task);
     } catch (error) {
         return res.status(500).json({message : "Error al obtener tareas"});
     }
