@@ -46,7 +46,7 @@ export function TaskFormPage() {
 
     return (
         <div className="max-w-xl mx-auto"> 
-            <h2>Crear Nueva Tarea</h2>
+            <h2 className="text-center p-3 text-2xl font-bold">Crear Nueva Tarea</h2>
             <form onSubmit={onSubmit}>
                 <input
                     className="bg-zinc-700 p-3 rounded-lg block w-full mb-3"
@@ -68,9 +68,9 @@ export function TaskFormPage() {
                 className="bg-zinc-700 p-3 rounded-lg block w-full mb-3"
 
                 {...register("estado", { required: true })}>
-                    <option value="TODO">TODO</option>
-                    <option value="PROGRESS">PROGRESS</option>
-                    <option value="DONE">DONE</option>
+                    <option value="TODO">To Do</option>
+                    <option value="PROGRESS">Progress</option>
+                    <option value="DONE">Done</option>
                 </select>
                 <button className="bg-cyan-500 p-3 rounded-2xl hover:bg-cyan-600 block w-full mt-3 hover:cursor-pointer" >Crear tarea</button>
             </form>

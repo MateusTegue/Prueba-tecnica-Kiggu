@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getTask } from "../api/task.api.js";
 
+// funcion para mostrar una tarea de manera independiente y poder leer su contenido completamente 
 export function TaskDetailPage() {
     const navigate = useNavigate()
 
@@ -11,6 +12,7 @@ export function TaskDetailPage() {
     const [task , setTask] = useState([]);
     
     useEffect(() => {
+        
         async function fetchData() {
             try {
                 const res = await getTask(id_tarea);

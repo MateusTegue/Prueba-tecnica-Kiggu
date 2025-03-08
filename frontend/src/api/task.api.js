@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-// intancia para la direccion del backend
+// instancia para la direccion de la url del backend
 const taskApi = axios.create({
   baseURL: 'http://localhost:3000/api/task'
   });
@@ -22,12 +22,12 @@ export const deleteTask = (id_tarea) => {
   return taskApi.delete(`/${id_tarea}`)
 }
 
-// metodo para actualizar
+// funcion para actualizar
 export const updateTask = (id_tarea, task) => {
   return taskApi.put(`/${id_tarea}`, task)
   }  
 
-  // metodo para obtener una tarea
+  // funcion para obtener una tarea
   export const getTask = (id_tarea) => {
     return taskApi.get(`/${id_tarea}`)
     }

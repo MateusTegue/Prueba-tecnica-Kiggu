@@ -1,4 +1,4 @@
-import { TaresaModel } from "../models/task.model.js";
+import { TaresaModel } from "../models/task.model.js"; // importamos el model que definimos en la carpeta models
 
 // registro de task controllers
 export const registrarTask = async (req, res) => {
@@ -10,7 +10,6 @@ export const registrarTask = async (req, res) => {
             return res.status(400).json({ message: "Faltan campos" });
 
             }
-        // verificar si el estudiante existe en la base de datos
         
         // crear nuevo estudiante
         const nuevaTask = await TaresaModel.registrarTareasModel(titulo , descripcion, estado);
@@ -21,7 +20,8 @@ export const registrarTask = async (req, res) => {
     }
 }
 
-// obtener todas las tareas
+
+// obtener todas las tareas que estan registradas en la base de datos 
 export const obtenerTareas = async (req, res) => {
     try {
         const task = await TaresaModel.obtenerTareasModel();
@@ -31,13 +31,15 @@ export const obtenerTareas = async (req, res) => {
     }
 }
 
-// obtener tarea por id 
+// obtener un tarea por id si se encuentra en la base de datos
 export const obtenerTareaId = async (req, res) => {
     try {
         const { id_tarea } = req.params;
         if(!id_tarea){
             return res.status(400).json({message : "Falta id"});
         }
+
+        // consultar la tareas de la base de datos 
         const task = await TaresaModel.obtenerTareaIdModel(id_tarea);
         return res.status(200).json(task);
 
@@ -57,6 +59,7 @@ export const actualizarTareaId = async (req, res) => {
             return res.status(400).json({ message: "Faltan campos" });
         }
 
+        // actualizar la tareas de la base de datos
         const task = await TaresaModel.actualizarTareaModel(id_tarea, titulo, descripcion, estado);
         return res.status(200).json(task);
     } catch (error) {
@@ -65,7 +68,7 @@ export const actualizarTareaId = async (req, res) => {
     }
 };
 
-// Eliminar tareaas 
+// Eliminar tareaas de la base de datos 
 export const eliminarTareas = async (req, res) => {
     try {
         const { id_tarea } = req.params;
@@ -78,3 +81,4 @@ export const eliminarTareas = async (req, res) => {
             return res.status(500).json({ message: "Error al eliminar tarea" });
         }
 }
+// fin del controlador, el cual llamamos logica del negocio

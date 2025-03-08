@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 
+// componenente para la navegacion de la aplicacion web
 export function Navegation(){
     return(
         <div className="flex justify-between py-3">

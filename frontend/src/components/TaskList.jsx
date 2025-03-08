@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react"
 import { getAllTasks } from "../api/task.api.js";
 import { TaskCard } from "./TaskCard.jsx";
-import { toast } from "react-hot-toast";
 
-
+// componente para mostrar todas las tareas de la base de datos por medio de cards, las cuales definimos en el archivo anterior
 export function TaskList(){
-    
     const [tasks, setTasks] = useState([]);
 
     // funcion para cargar todas las tareas 

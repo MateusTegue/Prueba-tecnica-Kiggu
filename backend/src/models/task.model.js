@@ -14,7 +14,7 @@ const registrarTareasModel = async (titulo, descripcion, estado) => {
 }
 
 
-// obtener tareas
+// obtener todas las tares de la base de datos 
 const obtenerTareasModel = async () => {
     try{
 
@@ -26,7 +26,7 @@ const obtenerTareasModel = async () => {
     }
 }
 
-// obtener tarea por id
+// obtener tarea por id de la base de datos
 const obtenerTareaIdModel = async (id_tarea) => {
    const query = {
     text: `SELECT * FROM task WHERE id_tarea = $1`,
@@ -36,7 +36,7 @@ const obtenerTareaIdModel = async (id_tarea) => {
     return rows[0];
 }
 
-// actualizar tares usando el id 
+// actualizar tares usando el id de la base de datos 
 const actualizarTareaModel = async (id_tarea, titulo, descripcion, estado) => {
     const query = {
         text: `UPDATE task SET titulo = $1, descripcion = $2, estado = $3 WHERE id_tarea = $4 RETURNING *`,
@@ -46,7 +46,7 @@ const actualizarTareaModel = async (id_tarea, titulo, descripcion, estado) => {
     return rows[0];
 };
 
-// eliminar tareas
+// eliminar tareas de la base de datos
 const eliminarTareaModel = async (id_tarea) => {
    try{
     const query = "DELETE FROM task WHERE id_tarea = $1 RETURNING *";

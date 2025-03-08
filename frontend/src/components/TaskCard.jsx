@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
+
+// componente para las cards de cada una de las tareas listadas 
 export function TaskCard({ task }){
-
-
     return (
         <div className="bg-cyan-900 p-3 hover:bg-cyan-500 hover:cursor-pointer"
 
